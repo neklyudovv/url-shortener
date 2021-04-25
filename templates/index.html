@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>URLshortener 1.0 beta</title>
+		{% if request.user.is_authenticated %}
+			<p align="right" style="margin-right: 1%;"><a href="admin/">adminka</a></p>
+		{% endif %}
+	</head>
+	<body>
+		<form method="POST">
+			{% csrf_token %}
+			<p align="center" style="margin-top: 5%;"><input type="text" name="longUrl"><input type="submit" name="shortBtn"></p>
+			<br />
+			<p align="center">{{ response | safe }}</p>
+		</form>
+	</body>
+</html>
