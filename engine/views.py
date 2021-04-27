@@ -16,11 +16,10 @@ def generate(request, longUrl):
 		else:
 			result += numbers[rand.randint(0, 9)]
 	if len(urlModel.objects.filter(shortUrl=result)) == 0:
-		url = urlModel()
-		url.longUrl = longUrl
-		url.shortUrl = result
+		url = urlModel(longUrl = longUrl, shortUrl = result)
 		url.save()
 		return f'Successful! Share your link - <a href="localhost:8000/{result}">localhost:8000/{result}</a>.'
+	generate(request, longUrl)
 
 
 def index(request):
